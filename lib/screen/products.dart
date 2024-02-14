@@ -84,11 +84,6 @@ class Products extends ConsumerWidget {
                   },
                 ),
               ),
-              // ElevatedButton(
-              //     onPressed: () {
-              //
-              //     },
-              //     child: Text("Add to Cart")),
               SizedBox(
                 height: 50,
               )
