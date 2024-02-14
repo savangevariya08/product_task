@@ -5,6 +5,7 @@ import 'package:product_task/screen/config/data/datas.dart';
 import 'package:badges/badges.dart' as badges;
 
 import '../provider/multi_rovider.dart';
+import '../widgets/rounded_btn.dart';
 import 'cart_screen.dart';
 import 'config/data/db_helper.dart';
 
@@ -51,35 +52,23 @@ class Products extends ConsumerWidget {
               SizedBox(
                 height: 10,
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     IconButton(
-              //         onPressed: () {
-              //           c.removerCounter();
-              //         },
-              //         icon: Icon(Icons.minimize)),
-              //     Text("${c.counter}", style: GoogleFonts.alata(fontSize: 25)),
-              //     IconButton(
-              //         onPressed: () {
-              //           c.addCounter();
-              //         },
-              //         icon: Icon(Icons.add)),
-              //   ],
-              // ),
               SizedBox(
                 height: 10,
               ),
-              ElevatedButton(
-                  onPressed: () {
+              Container(
+                height: 50,
+                width: 150,
+                child: RoundedButton(bgcolor: Colors.blue,
+                  btnName: 'Add to Cart',
+                  callback: () {
                     db!.insert(Cart(
-                            id: index,
-                            productId: index.toString(),
-                            productName: l[index].toString(),
-                            initialPrice: productPrice[index],
-                            productPrice: productPrice[index],
-                            quantity: 1,
-                            image: image[index].toString()))
+                        id: index,
+                        productId: index.toString(),
+                        productName: l[index].toString(),
+                        initialPrice: productPrice[index],
+                        productPrice: productPrice[index],
+                        quantity: 1,
+                        image: image[index].toString()))
                         .then((value) {
                       c.addTotalPrice(
                           double.parse(productPrice[index].toString()));
@@ -93,7 +82,13 @@ class Products extends ConsumerWidget {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     });
                   },
-                  child: Text("Add to Cart")),
+                ),
+              ),
+              // ElevatedButton(
+              //     onPressed: () {
+              //
+              //     },
+              //     child: Text("Add to Cart")),
               SizedBox(
                 height: 50,
               )
